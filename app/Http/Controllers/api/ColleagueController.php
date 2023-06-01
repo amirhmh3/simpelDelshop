@@ -3,23 +3,21 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
-use App\Http\Service\ColleagueService;
+use App\Http\repository\Repository;
 use App\Http\Service\Service;
-use App\Models\BaseModel;
-use App\Models\Colleague;
 use Illuminate\Http\Request;
 
 class ColleagueController extends BaseController
 {
     public $service;
-    public $model;
-    public function __construct(Request $request, Service $service,Colleague $model)
+    public $repository;
+    public function __construct(Request $request, Service $service,Repository $repository)
     {
-        parent::__construct($request, $service,$model);
+        parent::__construct($request, $service,$repository);
+        $service->setRepository($repository);
         $this->service=$service;
-        $this->model=$model;
-    }
+        $this->repository=$repository;
 
+    }
 
 }

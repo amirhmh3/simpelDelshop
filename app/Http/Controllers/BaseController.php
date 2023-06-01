@@ -9,11 +9,12 @@ class BaseController extends Controller
 {
     public $service;
     public $request;
-    public $model;
-    public function __construct($request, $service,$model)
+    public $repository;
+    public function __construct($request, $service,$repository)
     {
         $this->request=$request;
         $this->service=$service;
+        $this->repository=$repository;
     }
 
     /**
