@@ -21,6 +21,9 @@ class CheckAccess
         switch (Auth::user()->access) {
             case 2:
                 return BaseResponse::JSON(false, "Access to death", 403);
+            case 1:
+                if (!Auth::user()->register_form)
+                    return BaseResponse::JSON(false, "please register form", 403);
             default:
                 return $next($request);
         }

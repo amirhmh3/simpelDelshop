@@ -21,6 +21,7 @@ class User extends Authenticatable
         'access',
         'email',
         'password',
+        'register_form',
     ];
 
     /**
