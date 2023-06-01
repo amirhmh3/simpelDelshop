@@ -10,4 +10,32 @@ class Repository
         $this->model=$model;
     }
 
+    public function index()
+    {
+        return $this->model::all()->toArray();
+    }
+
+    public function store($param)
+    {
+        return $this->model->create($param);
+    }
+
+    public function show($id)
+    {
+        return $this->model::find($id);
+    }
+
+    public function update($param, $id)
+    {
+        $model=$this->model::find($id);
+        return $model->update($param);
+    }
+
+
+    public function destroy($id)
+    {
+        $model=$this->model::find($id);
+        return $model->delete();
+    }
+
 }

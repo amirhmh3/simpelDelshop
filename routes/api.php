@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register',[\App\Http\Controllers\api\Auth\UserController::class,'register']);
 Route::post('login',[\App\Http\Controllers\api\Auth\UserController::class,"login"]);
 
+
+Route::group(['prefix'=>"colleague",'middleware'=>['auth:api','access.colleague']],function (){
+    Route::resource("/",\App\Http\Controllers\api\ColleagueController::class);
+});
