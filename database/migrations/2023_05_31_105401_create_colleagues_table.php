@@ -15,9 +15,11 @@ class CreateColleaguesTable extends Migration
     {
         Schema::create('colleagues', function (Blueprint $table) {
             $table->id();
+            $table->integer("user_id");
             $table->string("name");
             $table->string("family");
             $table->boolean("status");
+            $table->foreign("user_id")->on("users")->references("id");
             $table->timestamps();
         });
     }
