@@ -21,7 +21,8 @@ class BaseController extends Controller
 
     public function index(Request $request)
     {
-        $result=$this->repository->index();
+        $param=$request->all();
+        $result=$this->repository->index($param);
         return BaseResponse::JSON(true,$result,201);
     }
 

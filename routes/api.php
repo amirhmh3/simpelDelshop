@@ -21,3 +21,7 @@ Route::post('login',[\App\Http\Controllers\api\Auth\UserController::class,"login
 Route::group(['prefix'=>"colleague",'middleware'=>['auth:api','access.colleague']],function (){
     Route::resource("/",\App\Http\Controllers\api\ColleagueController::class);
 });
+
+Route::group(['prefix'=>"customer",'middleware'=>['auth:api','access.customer']],function (){
+    Route::resource("/",\App\Http\Controllers\api\CustomerController::class);
+});
