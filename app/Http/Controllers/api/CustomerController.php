@@ -24,4 +24,12 @@ class CustomerController extends BaseController
 
     }
 
+    public function store(Request $request)
+    {
+        $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
+        $result=$this->service->store($param);
+        return BaseResponse::JSON(true,$result,201);
+    }
+
 }
