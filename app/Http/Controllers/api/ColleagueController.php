@@ -7,6 +7,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\repository\ColleagueRepository;
 use App\Http\Service\ColleagueService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ColleagueController extends BaseController
 {
@@ -24,6 +25,7 @@ class ColleagueController extends BaseController
     public function store(Request $request)
     {
         $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
         $result=$this->service->store($param);
         return BaseResponse::JSON(true,$result,201);
     }
