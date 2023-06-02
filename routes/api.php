@@ -37,5 +37,5 @@ Route::group(['prefix'=>"post",'middleware'=>['auth:api','access.colleague']],fu
 });
 
 Route::group(['prefix'=>"wallet",'middleware'=>['auth:api','access.colleague']],function (){
-    Route::resource("/",\App\Http\Controllers\api\PostController::class);
+    Route::resource("/",\App\Http\Controllers\api\WalletController::class);
 });

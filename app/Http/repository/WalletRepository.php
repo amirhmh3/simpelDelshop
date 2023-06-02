@@ -15,5 +15,10 @@ class WalletRepository extends Repository
         $this->model=$model;
     }
 
+    public function store($param)
+    {
+        $param["admin_id"]=$param["user_id"];
+        return $this->model->create($param);
+    }
 
 }
