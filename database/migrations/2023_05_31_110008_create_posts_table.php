@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string("title");
             $table->string("description");
             $table->string("img_url");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }
