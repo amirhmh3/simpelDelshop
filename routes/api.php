@@ -31,3 +31,7 @@ Route::group(['prefix'=>"customer",'middleware'=>['auth:api','access.customer']]
 Route::group(['prefix'=>"file",'middleware'=>['auth:api']],function (){
     Route::resource("/",\App\Http\Controllers\api\FileController::class);
 });
+
+Route::group(['prefix'=>"post",'middleware'=>['auth:api','access.colleague']],function (){
+    Route::resource("/",\App\Http\Controllers\api\PostController::class);
+});
