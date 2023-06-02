@@ -10,7 +10,7 @@ class Repository
         $this->model=$model;
     }
 
-    public function index()
+    public function index($param)
     {
         return $this->model::all()->toArray();
     }

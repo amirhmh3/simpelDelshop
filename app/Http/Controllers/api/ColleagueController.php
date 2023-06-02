@@ -28,4 +28,11 @@ class ColleagueController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function index(Request $request)
+    {
+        $param=$request->all();
+        $result=$this->service->index($param);
+        return BaseResponse::JSON(true,$result,201);
+    }
+
 }

@@ -23,4 +23,10 @@ class ColleagueService extends Service
         return $this->repository->store($param);
 
     }
+
+    public function index($param)
+    {
+        return $this->repository->index($param);
+
+    }
 }
