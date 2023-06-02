@@ -25,3 +25,7 @@ Route::group(['prefix'=>"colleague",'middleware'=>['auth:api','access.colleague'
 Route::group(['prefix'=>"customer",'middleware'=>['auth:api','access.customer']],function (){
     Route::resource("/",\App\Http\Controllers\api\CustomerController::class);
 });
+
+Route::group(['prefix'=>"file",'middleware'=>['auth:api']],function (){
+    Route::resource("/",\App\Http\Controllers\api\FileController::class);
+});
