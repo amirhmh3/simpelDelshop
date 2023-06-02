@@ -19,6 +19,7 @@ class CreateFilesTable extends Migration
             $table->integer("post_id");
             $table->string("url");
             $table->integer("file_type_id");
+            $table->boolean("status")->default(false);
             $table->foreign("customer_id")->on("customers")->references("id");
             $table->foreign("post_id")->on("posts")->references("id");
             $table->timestamps();
