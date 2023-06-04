@@ -30,6 +30,7 @@ Route::group(['prefix'=>"customer",'middleware'=>['auth:api']],function (){
 });
 
 Route::group(['prefix'=>"file",'middleware'=>['auth:api']],function (){
+    Route::put('/{id}',[\App\Http\Controllers\api\FileController::class,"update"]);
     Route::resource("/",\App\Http\Controllers\api\FileController::class);
 });
 
