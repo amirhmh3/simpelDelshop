@@ -26,6 +26,7 @@ Route::group(['prefix'=>"colleague",'middleware'=>['auth:api','access.colleague'
 
 Route::group(['prefix'=>"customer",'middleware'=>['auth:api']],function (){
     Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"index"]);
+    Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWallet"]);
     Route::resource("/",\App\Http\Controllers\api\CustomerController::class)->middleware('access.customer');
 });
 

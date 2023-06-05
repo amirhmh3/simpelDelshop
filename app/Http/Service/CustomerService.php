@@ -22,4 +22,21 @@ class CustomerService extends Service
         return $this->repository->store($param);
 
     }
+
+
+    public function getAllWallet($param)
+    {
+//        $roll = [
+//            'name' => ['required'],
+//            'family' => ['required'],
+//            'status' => ['required']
+//        ];
+//        $validate = Validator::make($param, $roll);
+//        if ($validate->fails()) {
+//            return BaseResponse::JSON( false,  $validate->errors(), 401);
+//        }
+
+        return $this->repository->getAllWallet($param);
+
+    }
 }
