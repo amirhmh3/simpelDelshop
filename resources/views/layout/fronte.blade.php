@@ -32,112 +32,12 @@
             }
         </style>
     </head>
-    <body dir="rtl">
-{{--    <div class="btn-dark"></div>--}}
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="../index3.html" class="brand-link">
-            <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
-            <span class="brand-text font-weight-light">پنل مدیریت</span>
-        </a>
-
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div>
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">حسام موسوی</a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-
-                        <li class="nav-item">
-                            <a href="gridUser.html" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-danger"></i>
-                                <p class="text">لیست کاربران</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gridColleague.html" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-warning"></i>
-                                <p>لیست همکاران</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="managment.html" class="nav-link">
-                                <i class="nav-icon fa fa-circle-o text-info"></i>
-                                <p>مدیریت</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-        </div>
-        <!-- /.sidebar -->
-    </aside>
+    <body>
+    @include("layout.slider")
+    @yield("content")
 
 
-
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>لیست کاربران</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active">جداول ساده</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
-
-
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <!--                            <h3 class="card-title">جدول 1</h3>-->
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table class="table table-bordered" id="myTable">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>فعالیت</th>
-
-                                    </tr>
-
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
+    </body>
     <script src="{{asset("js/jquery.min.js")}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{asset("js/bootstrap.bundle.min.js")}}"></script>
@@ -149,6 +49,4 @@
     <script src="{{asset("js/adminlte.min.js")}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset("js/demo.js")}}"></script>
-{{--    <script src="counst.js"></script>--}}
-    </body>
 </html>

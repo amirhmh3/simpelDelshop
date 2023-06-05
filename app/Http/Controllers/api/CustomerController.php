@@ -32,4 +32,12 @@ class CustomerController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function getAllWallet(Request $request)
+    {
+        $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
+        $result=$this->service->getAllWallet($param);
+        return BaseResponse::JSON(true,$result,201);
+    }
+
 }
