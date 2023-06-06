@@ -30,4 +30,11 @@ class PostController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function getAll(Request $request)
+    {
+        $param=$request;
+        $datas=$this->repository->index($param);
+        return view('home', compact('datas'));
+    }
+
 }

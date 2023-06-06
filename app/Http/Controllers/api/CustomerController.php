@@ -40,4 +40,20 @@ class CustomerController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function getAllWalletWeb(Request $request)
+    {
+        $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
+        $datas=$this->service->getAllWallet($param);
+        return view('wallet', compact('datas'));
+    }
+
+
+    public function getAll(Request $request)
+    {
+        $param=$request->all();
+        $datas=$this->repository->index($param);
+        return view('customer', compact('datas'));
+    }
+
 }

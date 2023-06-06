@@ -30,4 +30,18 @@ class FileController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function storeWeb(Request $request)
+    {
+        $param=$request;
+        $param["user_id"]=Auth::user()->id;
+        $this->service->store($param);
+        return redirect('/');
+    }
+
+    public function create(Request $request)
+    {
+        $data=$request->all();
+        return view('file',compact('data'));
+    }
+
 }

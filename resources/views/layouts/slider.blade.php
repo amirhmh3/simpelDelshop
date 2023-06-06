@@ -26,21 +26,30 @@
                          with font-awesome or any other icon font library -->
 
                     <li class="nav-item">
-                        <a href="gridUser.html" class="nav-link">
+                        <a href="customer" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-danger"></i>
                             <p class="text">لیست کاربران</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gridColleague.html" class="nav-link">
+                        <a href="colleague" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-warning"></i>
                             <p>لیست همکاران</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="managment.html" class="nav-link">
+                        <a href="customer/wallet" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-info"></i>
-                            <p>مدیریت</p>
+                            <p>کیف پول</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="d-inline-flex btn-block text-center">
+                                <p>خروج</p>
+                            </button>
+                        </form>
                         </a>
                     </li>
                 </ul>
