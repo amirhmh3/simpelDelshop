@@ -24,3 +24,7 @@ Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"getAll"]);
     Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWallet"]);
 });
+
+Route::group(['prefix'=>"colleague",'middleware'=>['auth:web']],function (){
+    Route::get('/',[\App\Http\Controllers\api\ColleagueController::class,"getAll"]);
+});

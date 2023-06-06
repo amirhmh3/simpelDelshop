@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gridColleague.html" class="nav-link">
+                        <a href="colleague" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-warning"></i>
                             <p>لیست همکاران</p>
                         </a>
