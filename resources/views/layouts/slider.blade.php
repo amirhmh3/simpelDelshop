@@ -38,9 +38,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="managment.html" class="nav-link">
+                        <a href="customer/wallet" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-info"></i>
-                            <p>مدیریت</p>
+                            <p>کیف پول</p>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -14,17 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->middleware("auth:web");
+Route::get('/', [\App\Http\Controllers\api\PostController::class,"getAll"])->middleware("auth:web");
+Route::post('/file', [\App\Http\Controllers\api\FileController::class,"create"])->middleware("auth:web");
+Route::post('/store', [\App\Http\Controllers\api\FileController::class,"storeWeb"])->middleware("auth:web");
+
+Route::get("/dashboard",function (){
+    return view('layouts.front');
+});
 
 Auth::routes();
 
 Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"getAll"]);
-    Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWallet"]);
+    Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWalletWeb"])->middleware('access.customer');
 });
 
 Route::group(['prefix'=>"colleague",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\ColleagueController::class,"getAll"]);
 });
+
+
+
+
