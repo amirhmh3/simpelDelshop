@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('home');
+})->middleware("auth:web");
+
+Auth::routes();
+
+Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
+    Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"getAll"]);
+    Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWallet"]);
 });
