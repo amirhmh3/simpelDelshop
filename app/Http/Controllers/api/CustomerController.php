@@ -42,8 +42,12 @@ class CustomerController extends BaseController
 
     public function getAllWalletWeb(Request $request)
     {
+        $user=Auth::user();
+        $user->can('edit articles');
+        if (!$user->can('edit articles'))
+        dd("dont Access");
         $param=$request->all();
-        $param["user_id"]=Auth::user()->id;
+        $param["user_id"]=$user->id;
         $datas=$this->service->getAllWallet($param);
         return view('wallet', compact('datas'));
     }

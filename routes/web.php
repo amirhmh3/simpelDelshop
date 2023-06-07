@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\api\PostController::class,"getAll"])->middleware("auth:web");
+Route::get('/permission', [\App\Http\Controllers\PermissionController::class,"index"])->middleware("auth:web");
+Route::post('/permission/role', [\App\Http\Controllers\RoleController::class,"store"])->middleware("auth:web");
+Route::post('/permission', [\App\Http\Controllers\PermissionController::class,"store"])->middleware("auth:web");
 Route::post('/file', [\App\Http\Controllers\api\FileController::class,"create"])->middleware("auth:web");
 Route::post('/store', [\App\Http\Controllers\api\FileController::class,"storeWeb"])->middleware("auth:web");
 

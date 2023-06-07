@@ -37,12 +37,22 @@
                             <p>لیست همکاران</p>
                         </a>
                     </li>
+                    @can('show access')
+                        <li class="nav-item">
+                            <a href="permission" class="nav-link">
+                                <i class="nav-icon fa fa-circle-o text-info"></i>
+                                <p> دسترسی ها</p>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('user')
                     <li class="nav-item">
                         <a href="customer/wallet" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-info"></i>
                             <p>کیف پول</p>
                         </a>
                     </li>
+                    @endcan
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
