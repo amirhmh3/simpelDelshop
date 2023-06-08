@@ -29,12 +29,23 @@ Route::group(['prefix'=>"permission",'middleware'=>['auth:web']],function (){
     Route::post('/role', [\App\Http\Controllers\RoleController::class,"store"])->middleware("auth:web");
     Route::post('/', [\App\Http\Controllers\PermissionController::class,"store"])->middleware("auth:web");
     Route::post('/colleague', [\App\Http\Controllers\PermissionController::class,"accessColleague"])->middleware("auth:web");
+    Route::post('/give/role', [\App\Http\Controllers\PermissionController::class,"roleGivePermissionTo"])->middleware("auth:web");
+    Route::delete('/role/permission', [\App\Http\Controllers\PermissionController::class,"removePermissionInRole"])->middleware("auth:web");
     Route::delete('/colleague', [\App\Http\Controllers\PermissionController::class,"deleteColleague"])->middleware("auth:web");
 });
 
 Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"getAll"]);
     Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWalletWeb"]);
+});
+
+Route::group(['prefix'=>"wallet",'middleware'=>['auth:web']],function (){
+    Route::post('/',[\App\Http\Controllers\api\WalletController::class,"storeWeb"]);
+});
+
+Route::group(['prefix'=>"file",'middleware'=>['auth:web']],function (){
+    Route::get('/',[\App\Http\Controllers\api\FileController::class,"getAll"]);
+    Route::put('/{id}',[\App\Http\Controllers\api\FileController::class,"updateWeb"]);
 });
 
 Route::group(['prefix'=>"colleague",'middleware'=>['auth:web']],function (){

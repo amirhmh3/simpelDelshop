@@ -73,13 +73,13 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    @include('auth.permission.gridRole',['datas'=>$datas['role']])
+                    @include('auth.permission.gridRole',['datas'=>$datas['role'],'permissions'=>$datas['permission']])
                 </div>
 
 
 
                 <div class="col-md-6">
-                    @include('auth.permission.gridPermission',['datas'=>$datas['permission']])
+                    @include('auth.permission.gridPermission',['datas'=>$datas['permission'],'roles'=>$datas['role']])
                 </div>
 
 

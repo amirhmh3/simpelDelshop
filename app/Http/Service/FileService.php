@@ -21,4 +21,9 @@ class FileService extends Service
 
         return $this->repository->store($param);
     }
+
+    public function getAll($param)
+    {
+        return $this->repository->getAll($param);
+    }
 }

@@ -44,6 +44,26 @@ class FileController extends BaseController
         return redirect('/');
     }
 
+    public function getAll(Request $request)
+    {
+        $user=Auth::user();
+        if (!$user->can('showAllFile'))
+            dd("dont Access");
+        $param=$request;
+        $datas=$this->service->getAll($param);
+        return view('admin.gridFile',compact('datas'));
+    }
+
+    public function updateWeb(Request $request,$id)
+    {
+        $user=Auth::user();
+        if (!$user->can('edit file'))
+            dd("dont Access");
+        $param=$request->all();
+        $this->repository->update($param,$id);
+        return back()->withInput();
+    }
+
     public function create(Request $request)
     {
         $data=$request->all();

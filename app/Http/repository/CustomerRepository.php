@@ -25,10 +25,7 @@ class CustomerRepository extends Repository
 
     public function getAllWallet($param)
     {
-//        $result=$this->model->create($param);
         $user=User::find($param["user_id"]);
-//        $user->update(["register_form"=>true]);
-
         return Customer::find($user->customer()->first()->id)->wallet()->get()->toArray();
     }
 

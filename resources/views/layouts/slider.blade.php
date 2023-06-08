@@ -56,6 +56,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('showAllFile')
+                    <li class="nav-item">
+                        <a href="file" class="nav-link">
+                            <i class="nav-icon fa fa-circle-o text-info"></i>
+                            <p>فایل ها</p>
+                        </a>
+                    </li>
+                    @endcan
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

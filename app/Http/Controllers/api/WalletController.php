@@ -30,4 +30,12 @@ class WalletController extends BaseController
         return BaseResponse::JSON(true,$result,201);
     }
 
+    public function storeWeb(Request $request)
+    {
+
+        $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
+        $this->service->store($param);
+        return back()->withInput();
+    }
 }

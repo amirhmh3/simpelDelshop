@@ -33,6 +33,13 @@ class PermissionController extends BaseController
         return redirect("permission");
     }
 
+    public function roleGivePermissionTo(Request $request)
+    {
+        $param=$request->all();
+        $this->service->roleGivePermissionTo($param);
+        return back()->withInput();
+    }
+
     public function accessColleague(Request $request)
     {
         $param=$request->all();
@@ -45,6 +52,13 @@ class PermissionController extends BaseController
     {
         $param=$request->all();
         $this->service->deleteColleague($param);
+        return back()->withInput();
+    }
+
+    public function removePermissionInRole(Request $request)
+    {
+        $param=$request->all();
+        $this->service->removePermissionInRole($param);
         return back()->withInput();
     }
 

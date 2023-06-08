@@ -24,8 +24,11 @@ class PostController extends BaseController
 
     public function store(Request $request)
     {
+        $user=Auth::user();
+        if (!$user->can('create post'))
+            return BaseResponse::JSON(true,"دسترسی ندارید",201);
         $param=$request;
-        $param["user_id"]=Auth::user()->id;
+        $param["user_id"]=$user->id;
         $result=$this->service->store($param);
         return BaseResponse::JSON(true,$result,201);
     }
