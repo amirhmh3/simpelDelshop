@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\api\PostController::class,"getAll"])->middleware("auth:web");
-Route::get('/permission', [\App\Http\Controllers\PermissionController::class,"index"])->middleware("auth:web");
-Route::post('/permission/role', [\App\Http\Controllers\RoleController::class,"store"])->middleware("auth:web");
-Route::post('/permission', [\App\Http\Controllers\PermissionController::class,"store"])->middleware("auth:web");
 Route::post('/file', [\App\Http\Controllers\api\FileController::class,"create"])->middleware("auth:web");
 Route::post('/store', [\App\Http\Controllers\api\FileController::class,"storeWeb"])->middleware("auth:web");
 
@@ -27,6 +24,14 @@ Route::get("/dashboard",function (){
 
 Auth::routes();
 
+Route::group(['prefix'=>"permission",'middleware'=>['auth:web']],function (){
+    Route::get('/', [\App\Http\Controllers\PermissionController::class,"index"])->middleware("auth:web");
+    Route::post('/role', [\App\Http\Controllers\RoleController::class,"store"])->middleware("auth:web");
+    Route::post('/', [\App\Http\Controllers\PermissionController::class,"store"])->middleware("auth:web");
+    Route::post('/colleague', [\App\Http\Controllers\PermissionController::class,"accessColleague"])->middleware("auth:web");
+    Route::delete('/colleague', [\App\Http\Controllers\PermissionController::class,"deleteColleague"])->middleware("auth:web");
+});
+
 Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\CustomerController::class,"getAll"]);
     Route::get('/wallet',[\App\Http\Controllers\api\CustomerController::class,"getAllWalletWeb"])->middleware('access.customer');
@@ -34,6 +39,8 @@ Route::group(['prefix'=>"customer",'middleware'=>['auth:web']],function (){
 
 Route::group(['prefix'=>"colleague",'middleware'=>['auth:web']],function (){
     Route::get('/',[\App\Http\Controllers\api\ColleagueController::class,"getAll"]);
+    Route::post('/',[\App\Http\Controllers\api\ColleagueController::class,"storeWeb"]);
+    Route::get('/edit/{id}',[\App\Http\Controllers\api\ColleagueController::class,"formUpdate"]);
 });
 
 

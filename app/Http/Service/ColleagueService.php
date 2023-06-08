@@ -24,9 +24,26 @@ class ColleagueService extends Service
 
     }
 
-    public function index($param)
+    public function storeWeb($param)
     {
-        return $this->repository->index($param);
+        $roll = [
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'confirmed', 'min:6', 'max:20'],
+            'name' => ['required'],
+            'family' => ['required']
+        ];
+        $validate = Validator::make($param, $roll);
+        if ($validate->fails()) {
+            return BaseResponse::JSON( false,  $validate->errors(), 401);
+        }
+
+        return $this->repository->storeWeb($param);
+
+    }
+
+    public function getAll($param)
+    {
+        return $this->repository->getAll($param);
 
     }
 }

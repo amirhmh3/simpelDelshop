@@ -3,9 +3,12 @@
 namespace App\Http\repository;
 
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Support\Str;
+use mysql_xdevapi\Exception;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class PermissionRepository extends Repository
 {
@@ -18,10 +21,45 @@ class PermissionRepository extends Repository
 
     public function store($param)
     {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
         $data=["name"=>$param["name"]];
-        $this->model->create($data);
+        $permission=$this->model->create($data);
+        if ($param["role_id"]==0)
+            return $permission;
+
+            $role=Role::find($param["role_id"]);
+            return $role->givePermissionTo($param["name"]);
+
+    }
+
+    public function accessColleague($param)
+    {
+        if ($param["user_id"]==0 or $param["role_id"]==0)
+            return "error";
+
+        $user=User::find($param["user_id"]);
         $role=Role::find($param["role_id"]);
-        return $role->givePermissionTo($param["name"]);
+
+        $user->assignRole($role->name);
+            return true;
+
+    }
+
+    public function deleteColleague($param)
+    {
+        if ($param["user_id"]==0 )
+            return "error";
+
+        $user=User::find($param["user_id"]);
+
+        if ($param["role_id"]==0)
+            return $user->syncRoles([]);
+
+
+        $role=Role::find($param["role_id"]);
+        $user->removeRole($role);
+            return true;
+
     }
 
     public function index($param)

@@ -23,4 +23,32 @@ class PermissionService extends Service
 
         return $this->repository->store($param);
     }
+
+    public function accessColleague($param)
+    {
+        $roll = [
+            'role_id' => ['required'],
+            'user_id' => ['required']
+        ];
+        $validate = Validator::make($param, $roll);
+        if ($validate->fails()) {
+            return BaseResponse::JSON( false,  $validate->errors(), 401);
+        }
+
+        return $this->repository->accessColleague($param);
+    }
+
+    public function deleteColleague($param)
+    {
+        $roll = [
+            'role_id' => ['required'],
+            'user_id' => ['required']
+        ];
+        $validate = Validator::make($param, $roll);
+        if ($validate->fails()) {
+            return BaseResponse::JSON( false,  $validate->errors(), 401);
+        }
+
+        return $this->repository->deleteColleague($param);
+    }
 }

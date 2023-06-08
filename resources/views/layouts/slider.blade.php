@@ -24,19 +24,22 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-
+                    @can('show customer')
                     <li class="nav-item">
                         <a href="customer" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-danger"></i>
                             <p class="text">لیست کاربران</p>
                         </a>
                     </li>
+                    @endcan
+                    @can('show colleague')
                     <li class="nav-item">
                         <a href="colleague" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-warning"></i>
                             <p>لیست همکاران</p>
                         </a>
                     </li>
+                    @endcan
                     @can('show access')
                         <li class="nav-item">
                             <a href="permission" class="nav-link">
@@ -45,7 +48,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('user')
+                    @can('show wallet')
                     <li class="nav-item">
                         <a href="customer/wallet" class="nav-link">
                             <i class="nav-icon fa fa-circle-o text-info"></i>

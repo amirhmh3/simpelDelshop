@@ -40,8 +40,30 @@ class ColleagueController extends BaseController
     public function getAll(Request $request)
     {
         $param=$request->all();
-        $datas=$this->repository->index($param);
+        $datas=$this->repository->getAll($param);
         return view('colleague', compact('datas'));
+    }
+
+    public function storeWeb(Request $request)
+    {
+        $param=$request->all();
+        $param["user_id"]=Auth::user()->id;
+        $this->service->storeWeb($param);
+        return redirect("colleague");
+    }
+
+    public function update(Request $request,$id)
+    {
+        $param=$request->all();
+        dd($id);
+        $param["user_id"]=Auth::user()->id;
+        $this->service->storeWeb($param);
+        return redirect("colleague");
+    }
+
+    public function formUpdate(Request $request,$id)
+    {
+        return view('colleague.form', compact('id'));
     }
 
 }
