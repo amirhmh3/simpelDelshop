@@ -37,14 +37,15 @@ class PermissionController extends BaseController
     {
         $param=$request->all();
         $this->service->accessColleague($param);
-        return redirect("colleague");
+        return back()->withInput();
     }
+
 
     public function deleteColleague(Request $request)
     {
         $param=$request->all();
         $this->service->deleteColleague($param);
-        return redirect("colleague");
+        return back()->withInput();
     }
 
 

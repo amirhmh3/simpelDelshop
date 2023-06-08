@@ -43,8 +43,7 @@ class CustomerController extends BaseController
     public function getAllWalletWeb(Request $request)
     {
         $user=Auth::user();
-        $user->can('edit articles');
-        if (!$user->can('edit articles'))
+        if (!$user->can('show wallet'))
         dd("dont Access");
         $param=$request->all();
         $param["user_id"]=$user->id;
@@ -56,7 +55,7 @@ class CustomerController extends BaseController
     public function getAll(Request $request)
     {
         $param=$request->all();
-        $datas=$this->repository->index($param);
+        $datas=$this->service->getAll($param);
         return view('customer', compact('datas'));
     }
 

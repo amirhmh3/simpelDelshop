@@ -39,4 +39,9 @@ class CustomerService extends Service
         return $this->repository->getAllWallet($param);
 
     }
+
+    public function getAll($param)
+    {
+        return $this->repository->getAll($param);
+    }
 }

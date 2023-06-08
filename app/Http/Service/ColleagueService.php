@@ -44,6 +44,5 @@ class ColleagueService extends Service
     public function getAll($param)
     {
         return $this->repository->getAll($param);
-
     }
 }

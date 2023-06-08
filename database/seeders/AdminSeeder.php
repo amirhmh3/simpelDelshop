@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
     {
         $user=User::query()->create([
             "access" =>0,
-            "register_form" =>0,
+            "register_form" =>1,
             'email'=>'amirhmh@gmail.com',
             "password"=>bcrypt('123456')
         ]);
