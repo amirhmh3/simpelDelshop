@@ -15,12 +15,15 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>فعالیت</th>
+                                        @can('show file')
                                         <th>action</th>
+                                        @endcan
                                     </tr>
                                     @foreach($datas as $data)
                                         <tr>
                                             <td>{{$data["id"]}}</td>
                                             <td>{{$data["title"]}}</td>
+                                            @can('show file')
                                             <td>
                                                 <form action="file" method="post">
 
@@ -28,7 +31,9 @@
                                                     <input type="hidden" name="post_id" value="{{$data["id"]}}" >
                                                     <input class="btn btn-success" type="submit" value="action">
                                                 </form></td>
+                                            @endcan
                                         </tr>
+
                                     @endforeach
                                 </table>
                             </div>

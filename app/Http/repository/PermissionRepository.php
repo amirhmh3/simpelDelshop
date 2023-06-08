@@ -4,6 +4,7 @@ namespace App\Http\repository;
 
 use App\Models\File;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use mysql_xdevapi\Exception;
 use Spatie\Permission\Models\Permission;
@@ -22,7 +23,7 @@ class PermissionRepository extends Repository
     public function store($param)
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
-        $data=["name"=>$param["name"]];
+        $data=["name"=>$param["name"],'guard_name'=>$param["guard_name"]];
         $permission=$this->model->create($data);
         if ($param["role_id"]==0)
             return $permission;
@@ -34,12 +35,14 @@ class PermissionRepository extends Repository
 
     public function accessColleague($param)
     {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
         if ($param["user_id"]==0 or $param["role_id"]==0)
             return "error";
 
         $user=User::find($param["user_id"]);
         $role=Role::find($param["role_id"]);
 
+        Auth::shouldUse($role->guard_name);
         $user->assignRole($role->name);
             return true;
 

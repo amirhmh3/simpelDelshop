@@ -24,16 +24,22 @@ class FileController extends BaseController
 
     public function store(Request $request)
     {
+        $user=Auth::user();
+        if (!$user->can('create file'))
+            dd("dont Access");
         $param=$request;
-        $param["user_id"]=Auth::user()->id;
+        $param["user_id"]=$user->id;
         $result=$this->service->store($param);
         return BaseResponse::JSON(true,$result,201);
     }
 
     public function storeWeb(Request $request)
     {
+        $user=Auth::user();
+        if (!$user->can('create file'))
+            dd("dont Access");
         $param=$request;
-        $param["user_id"]=Auth::user()->id;
+        $param["user_id"]=$user->id;
         $this->service->store($param);
         return redirect('/');
     }

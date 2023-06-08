@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+    @can('show file')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -27,7 +27,6 @@
             </div>
         </div>
     </section>
-
-    </div>
+    @endcan
 
 @endsection

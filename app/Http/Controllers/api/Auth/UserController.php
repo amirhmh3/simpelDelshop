@@ -35,7 +35,6 @@ class UserController extends Controller
         $roll = [
             'email' => ['required', 'email'],
             'password' => ['required']
-//            'is_store'=>['required']
         ];
 
 
